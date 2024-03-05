@@ -1,0 +1,22 @@
+
+         html,body{height: 100%;}
+         .bg-utama{
+         background-image: url("assets/img/logo/PabrikSemenGresik.jpeg");
+         background-size: cover;
+         background-position: center;
+         text-align: center;
+         height: 100%;
+         width: 100%;
+         display: table;
+         vertical-align: middle;
+         }
+         h1,p{color: white;}
+         .konten-ditengah {
+         display: table-cell;
+         vertical-align: middle;
+         }
+         .bg-text {
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+          color: white;
+        }
