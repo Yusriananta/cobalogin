@@ -155,7 +155,7 @@ class program_model extends CI_Model
 			ROUND((SELECT SUM(q3)/$kegiatan FROM pelaksanaan WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun $filter),2) AS tQ3,
 			ROUND((SELECT SUM(tpoin + tQ1 + tQ2 + tQ3)),2) AS total
 			");
-
+			// print_r($query);exit();
 		return $query->row_array();
 	}
 
@@ -206,13 +206,27 @@ class program_model extends CI_Model
 			
 		}
 
+		// $sendData="{name :'Total',data :[".implode(",",$dataTotal)."]},
+		// 			{name :'Pelaksanaan',data :[".implode(",",$dataPoin)."]},
+		// 			{name :'Keterlibatan Pemimpin',data :[".implode(",",$dataq1)."]},
+		// 			{name :'Kerjasama Tim',data :[".implode(",",$dataq2)."]},
+		// 			{name :'Keterlibatan Karyawan 80%',data :[".implode(",",$dataq3)."]}
+		// 			";
+
 		
-		$sendData="{name :'Total',data :[".implode(",",$dataTotal)."]},
-					{name :'Pelaksanaan',data :[".implode(",",$dataPoin)."]},
-					{name :'Keterlibatan Pemimpin',data :[".implode(",",$dataq1)."]},
-					{name :'Kerjasama Tim',data :[".implode(",",$dataq2)."]},
-					{name :'Keterlibatan Karyawan 80%',data :[".implode(",",$dataq3)."]}
-					";
+		// $sendData[]="[".implode(",",$dataTotal)."],
+		// 			[".implode(",",$dataPoin)."],
+		// 			[".implode(",",$dataq1)."],
+		// 			[".implode(",",$dataq2)."],
+		// 			[".implode(",",$dataq3)."]
+		// 			";
+		$sendData=[	"total"=>"[".implode(',',$dataTotal)."];",
+					"kegiatan"=>"[".implode(',',$dataPoin)."];",
+					"valueq1"=>"[".implode(',',$dataq1)."];",
+					"valueq2"=>"[".implode(',',$dataq2)."];",
+					"valueq3"=>"[".implode(',',$dataq3)."];",
+
+		];
 					// print_r($sendData);exit();
 		return $sendData;
 

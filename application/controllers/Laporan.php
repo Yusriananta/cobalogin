@@ -211,7 +211,7 @@ class Laporan extends CI_Controller
 
 		$data['user'] = $user;
 		$id_unit = $user['id_unit'];
-		$tahun=$this->input->post('tahun');
+		$tahun=$this->input->post('tahun', true);
 
 		if (!$tahun) {
 			$tahun = date('Y');
@@ -221,6 +221,7 @@ class Laporan extends CI_Controller
 		$data['unit'] = $this->db->get_where('unit_kerja', ['id' => $id_unit])->row_array();
 		$data['tahun_grp'] = $tahun;
 		$data['data_grp']=$this->program_model->nilaiGrafik($id_unit, $tahun);
+		$data['valueChart']=$this->program_model->nilaiGrafik($id_unit, $tahun);
 
 	
 			$this->load->view('templates/sidebar', $data);

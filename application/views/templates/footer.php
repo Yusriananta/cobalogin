@@ -63,7 +63,7 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
+    <script src="<?php echo base_url('assets/');?>js/plotly-latest.min.js"></script>
 
     
     <script>
@@ -221,22 +221,7 @@
                 });
         }
 
-        function grafik(){
-            var idValue = $( "#id" ).val();
-            var tahunValue = $( "#tahun" ).val();
-
-
-            $.ajax({
-                type: 'POST',
-                dataType: 'html',
-                url : '<?php echo base_url('program/grafik');?>',
-                data:{id:idValue, tahun: tahunValue},
-                success: function(response){
-                    alert(idValue);
-                }
-            });
-        }
-
+       
 
    Highcharts.chart('container', {
 
@@ -283,7 +268,7 @@
         data: [43934, 48656, 65165, 81827, 112143, 142383,
             171533, 165174, 155157, 161454, 154610]
     },
-
+    
 
     ],
 
@@ -303,6 +288,9 @@
     }
 
 });
+
+
+
     </script>
 
 

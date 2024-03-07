@@ -372,22 +372,22 @@ class program extends CI_Controller
 
     public function grafik()
     {
-  //   	$id_unit= $this->input->post('unit');
-		// $tahun= $this->input->post('tahun');
+    	$id_unit= $this->input->post('id', true);
+		$tahun= $this->input->post('tahun', true);
 
-		$id = $_POST['id'];
-		$tahun = $_POST['tahun'];
+		// $id_unit = $_POST['id'];
+		// $tahun = $_POST['tahun'];
 
 		
 		
-		if (!$id) {
-			$id = 1;
+		if (!$id_unit) {
+			$id_unit = 1;
 		}
 
 		if (!$tahun) {
 			$tahun = date('Y');
 		}
-		// print_r($id);exit();
+		// print_r($id_unit);exit();
 
     	$data['title'] = 'Grafik Kegiatan';
 		//Memanggil data User
@@ -395,9 +395,14 @@ class program extends CI_Controller
 		$this->session->userdata('email')])->row_array();
 		$data['tahun'] = $this->program_model->getTahunPlanning();
 		$data['user_unit'] = $this->db->get('unit_kerja')->result_array();
-		$data['unit'] = $this->db->get_where('unit_kerja', ['id' => $id])->row_array();
+		$data['unit'] = $this->db->get_where('unit_kerja', ['id' => $id_unit])->row_array();
+		// print_r($data['unit']);exit();
 		$data['tahun_grp'] = $tahun;
-		$data['data_grp']=$this->program_model->nilaiGrafik($id, $tahun);
+		// $data['data_grp']=$this->program_model->nilaiGrafik($id_unit, $tahun);
+		$data['y1value'] = "[10, 20, 30, 40, 50, 60];";
+		$data['valueChart']=$this->program_model->nilaiGrafik($id_unit, $tahun);
+		// print_r($data['valueChart']);
+		// exit();
 
 		//end item
 
