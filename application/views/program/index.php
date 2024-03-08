@@ -51,7 +51,7 @@
                     
                   </td>
                   <td>
-                    <a id="rekap_nilai" onclick="data_mandatori()" class="btn btn-primary" target="_blank"><i class="fas fa-search"></i></a>
+                    <a id="rekap_nilai" onclick="data_mandatori()" class="btn btn-sm btn-dark" target="_blank"><i class="fas fa-search"></i></a>
                     <!-- <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button> -->
                   </td>
                 

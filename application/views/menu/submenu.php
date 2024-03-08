@@ -17,7 +17,7 @@
 
 
 
-                    	<a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#AddNewSubMenu">Add new Submenu</a>
+                    	<a href="" class="btn btn-dark mb-3" data-toggle="modal" data-target="#AddNewSubMenu"><i class="far fa-plus-square"></i> Add new Submenu</a>
 
 
 

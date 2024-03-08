@@ -33,7 +33,7 @@
                                             <td><?php echo $no++;?></td>
                                             <td><?php echo $unit['unit'];?></td>
                                             <td>
-                                            <a href="<?php echo base_url();?>program/kegiatan_terlaksana/<?php echo $unit['id'];?>" class="btn btn-info">
+                                            <a href="<?php echo base_url();?>program/kegiatan_terlaksana/<?php echo $unit['id'];?>" class="btn btn-sm btn-info">
                                               <i class="fas fa-eye"></i>
                                             Lihat Kegiatan</a>
                                             </td>

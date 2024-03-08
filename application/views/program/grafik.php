@@ -34,7 +34,7 @@
                 </td>
                 <td>
                     <!-- <a id="grafik" onclick="grafik()" class="btn btn-primary" target="_blank"><i class="fas fa-search"></i></a> -->
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                    <button type="submit" class="btn btn-sm btn-dark"><i class="fas fa-search"></i></button>
                 </td>
                 
               </tbody>

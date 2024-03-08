@@ -148,12 +148,19 @@ class program_model extends CI_Model
 		$kegiatan = $query1['kegiatan'];
 		
 	
+		// $query = $this->db->query("
+		// 	SELECT ROUND((SELECT SUM(poin)/$kegiatan FROM pelaksanaan WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun $filter),2) AS tPoin,
+		// 	ROUND((SELECT SUM(q1)/$kegiatan FROM pelaksanaan WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun $filter),2) AS tQ1,
+		// 	ROUND((SELECT SUM(q2)/$kegiatan FROM pelaksanaan WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun $filter),2) AS tQ2,
+		// 	ROUND((SELECT SUM(q3)/$kegiatan FROM pelaksanaan WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun $filter),2) AS tQ3,
+		// 	ROUND((SELECT SUM(tpoin + tQ1 + tQ2 + tQ3)),2) AS total
+		// 	");
 		$query = $this->db->query("
-			SELECT ROUND((SELECT SUM(poin)/$kegiatan FROM pelaksanaan WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun $filter),2) AS tPoin,
-			ROUND((SELECT SUM(q1)/$kegiatan FROM pelaksanaan WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun $filter),2) AS tQ1,
-			ROUND((SELECT SUM(q2)/$kegiatan FROM pelaksanaan WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun $filter),2) AS tQ2,
-			ROUND((SELECT SUM(q3)/$kegiatan FROM pelaksanaan WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun $filter),2) AS tQ3,
-			ROUND((SELECT SUM(tpoin + tQ1 + tQ2 + tQ3)),2) AS total
+			SELECT ROUND((SELECT if(AVG(poin)is NULL ,0, AVG(poin))  FROM pelaksanaan WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun $filter),2) AS tPoin,
+			ROUND((SELECT if(AVG(q1)is NULL ,0,AVG(q1)) FROM pelaksanaan WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun $filter),2) AS tQ1,
+			ROUND((SELECT if(AVG(q2)is NULL ,0,AVG(q2)) FROM pelaksanaan WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun $filter),2) AS tQ2,
+			ROUND((SELECT if(AVG(q3)is NULL ,0,AVG(q3)) FROM pelaksanaan WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun $filter),2) AS tQ3,
+			ROUND((SELECT AVG(tpoin + tQ1 + tQ2 + tQ3)),2) AS total
 			");
 			// print_r($query);exit();
 		return $query->row_array();

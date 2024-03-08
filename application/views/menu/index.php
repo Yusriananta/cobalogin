@@ -13,7 +13,7 @@
 
 
 
-                    	<a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#AddNewMenu">Add new menu</a>
+                    	<a href="" class="btn btn-dark mb-3" data-toggle="modal" data-target="#AddNewMenu"><i class="far fa-plus-square"></i> Add new menu</a>
 
 
 

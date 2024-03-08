@@ -203,14 +203,14 @@
                     success: function(response){
                         var todos = JSON.parse(response);
                         todos.forEach(function(value, index){
-                            var html="<tr>";
+                            var html="<tr class = 'text-center'>";
                             html+="<td>"+value.dataNilai.no+"</td>";
-                            html+="<td>"+value.dataNilai.unit+"</td>";
+                            html+="<td class = 'text-left'>"+value.dataNilai.unit+"</td>";
                             html+="<td>"+value.dataNilai.poin+"</td>";
                             html+="<td>"+value.dataNilai.q1+"</td>";
                             html+="<td>"+value.dataNilai.q2+"</td>";
                             html+="<td>"+value.dataNilai.q3+"</td>";
-                            html+="<td>"+value.dataNilai.total+"</td>";
+                            html+="<td><i class='fas fa-star'></i>"+value.dataNilai.total+"</td>";
                             html+="</tr>";
                             $("#tbNilai").append(html);
                             

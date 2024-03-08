@@ -28,7 +28,7 @@
                                     
                                   </td>
                                   <td>
-                                    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                    <button type="submit" class="btn btn-sm btn-dark"><i class="fas fa-search"></i></button>
                                   </td>
                                   </form>
                           </tbody>

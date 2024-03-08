@@ -46,8 +46,8 @@
                     
                   </td>
                   <td>
-                    <a id="rekap_nilai" onclick="rekap_nilai()" class="btn btn-primary" target="_blank"><i class="fas fa-search"></i></a>
-                    <button type="submit" class="btn btn-success">Export PDF</button>
+                    <a id="rekap_nilai" onclick="rekap_nilai()" class="btn btn-sm btn-dark" target="_blank"><i class="fas fa-search"></i></a>
+                    <button type="submit" class="btn btn-sm btn-danger"><i class="far fa-file-pdf"></i> Export PDF</button>
                   </td>
                 
               </tbody>

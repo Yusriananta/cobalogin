@@ -35,7 +35,7 @@
 						      <td><?php echo $md['deskripsi'];?></td>
 						      <td>01 - <?php echo date('t F Y');?></td>
 						      <td>
-						      	<a href="<?php echo base_url();?>laporan/pelaksanaan/<?php echo $md['id'];?>" class="btn btn-info">
+						      	<a href="<?php echo base_url();?>laporan/pelaksanaan/<?php echo $md['id'];?>" class="btn btn-sm btn-info">
 						      		<i class="fas fa-edit"></i>
 						      	Tambah Pelaksanaan</a>
 						      </td>
@@ -76,7 +76,7 @@
 						      <td><?php echo $ap['deskripsi'];?></td>
 						      <td>01 - <?php echo date('t F Y');?></td>
 						      <td>
-						      	<a href="<?php echo base_url();?>laporan/pelaksanaan/<?php echo $ap['id'];?>" class="btn btn-info">
+						      	<a href="<?php echo base_url();?>laporan/pelaksanaan/<?php echo $ap['id'];?>" class="btn btn-sm btn-info">
 						      		<i class="fas fa-edit"></i>
 						      	Tambah Pelaksanaan</a>
 						      </td>

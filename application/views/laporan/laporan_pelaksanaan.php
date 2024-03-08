@@ -48,7 +48,7 @@
                     
                   </td>
                   <td>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                    <button type="submit" class="btn btn-sm btn-dark"><i class="fas fa-search"></i></button>
                   </td>
                 
               </tbody>
@@ -84,7 +84,7 @@
 								?>
 						      </td>
 						      <td>
-						      	<a  class="btn btn-info" href="<?php echo base_url();?>laporan/detail/<?php echo $tl['id'];?>">
+						      	<a  class="btn btn-sm btn-info" href="<?php echo base_url();?>laporan/detail/<?php echo $tl['id'];?>">
 						      		<i class="fas fa-info-circle"></i>
 						      	Detail</a>
 						      </td>
