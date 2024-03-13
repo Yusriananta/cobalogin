@@ -306,7 +306,7 @@ class program extends CI_Controller
 		$data['bulan'] = $this->db->get_where('nama_bulan', ['id' => $bulan])->row_array();
 		$data['tahun'] = $tahun;
 
-        $file_pdf = $data['title'];
+        $file_pdf = "Rekap Nilai $bulan-$tahun";
         $paper = 'A4';
         $orientation = "landscape";
         $html = $this->load->view('rekap_nilai', $data, true);

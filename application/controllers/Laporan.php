@@ -34,7 +34,10 @@ class Laporan extends CI_Controller
 
 	public function Pelaksanaan()
 	{
+		// print_r($_FILES['image_q2']);
+		// exit();
 		$data['title'] = 'Pelaksanaan Program';
+
 		//Memanggil data User
 		$user = $this->db->get_where('user', ['email' =>$this->session->userdata('email')])->row_array();
 		$data['user'] = $user;
@@ -52,63 +55,70 @@ class Laporan extends CI_Controller
 		$this->form_validation->set_rules('q3', 'Question' ,'required');
 
 		if ($this->form_validation->run() == false){
-
 			$this->load->view('templates/sidebar', $data);
 			$this->load->view('templates/topbar', $data);
 			$this->load->view('laporan/Pelaksanaan', $data);
 			$this->load->view('templates/footer');
 		}else{
-
-			
-
-
-           $config['upload_path']          = './assets/img/kegiatan/';
-                $config['allowed_types']        = 'gif|jpg|png|PNG';
+           		$config['upload_path']          = './assets/img/kegiatan/';
+                $config['allowed_types']        = 'gif|jpg|png|PNG|JPEG';
                 $config['max_size']             = 5120; //max file 5mb
                
 
                 $this->load->library('upload', $config);
 
-                if (!empty($_FILES['image_q1'])) {
+					// print($this->upload->data());
+					// exit();
+                if (!empty($_FILES['image_q1']['name'])) {
                 	$this->upload->do_upload('image_q1');
                 	$data1 		= $this->upload->data();
                 	$image_q1	= $data1['file_name'];
-                	
-                }
+                }else{
+					$image_q1="";
+				}
 
-                  if (!empty($_FILES['image_q2'])) {
+				if (!empty($_FILES['image_q2']['name'])) {
                 	$this->upload->do_upload('image_q2');
                 	$data2 		= $this->upload->data();
                 	$image_q2	= $data2['file_name'];
-                }
+                }else{
+					$image_q2=""; 
+				}
 
-                if (!empty($_FILES['image_q3'])) {
+                if (!empty($_FILES['image_q3']['name'])) {
                 	$this->upload->do_upload('image_q3');
                 	$data3 		= $this->upload->data();
                 	$image_q3	= $data3['file_name'];
-                }
+                }else{
+					$image_q3="";
+				}
 
-                if (!empty($_FILES['evidence1'])) {
+                if (!empty($_FILES['evidence1']['name'])) {
                 	$this->upload->do_upload('evidence1');
                 	$data4 		= $this->upload->data();
                 	$evidence1	= $data4['file_name'];
-                }
+                }else{
+					$evidence1="";
+				}
 
 
-                if (!empty($_FILES['evidence2'])) {
+                if (!empty($_FILES['evidence2']['name'])) {
                 	$this->upload->do_upload('evidence2');
                 	$data5 		= $this->upload->data();
                 	$evidence2	= $data5['file_name'];
-                }
+                }else{
+					$evidence2="";
+				}
 
 
-                if (!empty($_FILES['evidence3'])) {
+                if (!empty($_FILES['evidence3']['name'])) {
                 	$this->upload->do_upload('evidence3');
                 	$data6 		= $this->upload->data();
                 	$evidence3	= $data6['file_name'];
-                }
+                }else{
+					$evidence3="";
+				}
                 		
-
 
                         $data =
 							[

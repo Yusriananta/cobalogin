@@ -15,8 +15,8 @@ class Admin extends CI_Controller
 	{
 		$data['title'] = 'Dashboard';
 		//Memanggil data User
-		$data['user'] = $this->db->get_where('user', ['email' =>
-		$this->session->userdata('email')])->row_array();
+		$user = $this->db->get_where('user', ['email' =>$this->session->userdata('email')])->row_array();
+		$data['user'] = $user;
 
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('templates/topbar', $data);

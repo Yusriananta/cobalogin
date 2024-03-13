@@ -3,10 +3,41 @@
 
             <!-- Main Content -->
   <div id="content">
-
+  
 
                 <!-- Begin Page Content -->
     <div class="container">
+      <div class="row">
+        <div class="col-6">
+        <h1 class="h3 mb-1 text-gray-800">Hallo <b><?php echo $user['name'];?></b></h1>
+        </div>
+        <div class="col-6 text-right">
+          <span class="btn btn-sm btn-success"><i class="far fa-calendar-alt"></i>  <?php echo date('l, d F Y');?></span>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col">
+        <h5>Selamat datang di aplikasi <b>Digital Cultur Monitoring,</b> yaitu Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, fuga dolorum debitis ut placeat earum.</h5>
+        </div> 
+      </div>
+      <div class="row">
+        <div class="col">
+          <table class="table table-bordered">
+            <tr class="font-weight-bold">
+              <td>Kegiatan</td>
+              <td>Kehadiran Pemimpin</td>
+              <td>Kerjasama Tim</td>
+              <td>Partisipatif Aktif Karyawan</td>
+            </tr>
+            <tr>
+              <td>35%</td>
+              <td>40%</td>
+              <td>15%</td>
+              <td>10%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
       <div class="justify-content-center">
 
                 <div id="demo" class="carousel slide" data-ride="carousel">

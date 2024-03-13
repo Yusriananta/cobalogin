@@ -29,15 +29,16 @@
 </head>
 
 <body>
-<!-- <img src="asset/img/logo/LogoSemenGresik.png" style="position: absolute; width: 60px; height: auto;"> -->
+
   <table>
       <tr>
-          <td align="left">
-              <span style="line-height: 1.6; font-weight: bold;">
-                  Rekap nilai monitor budaya bulan <?php echo $bulan['nama_bulan']; echo " ";echo $tahun;?>
-                  <br>PT. SEMEN GRESIK
-              </span>
-          </td>
+        <td width="100px"><img src="<?php echo base_url('assets/img/logo/')."LogoSemenGresik.png";?>" width="80px"></td>
+        <td align="left">
+            <span style="line-height: 1.6; font-weight: bold;">
+                Rekap nilai monitor budaya bulan <?php echo $bulan['nama_bulan']; echo " ";echo $tahun;?>
+                <br>PT. SEMEN GRESIK
+            </span>
+        </td>
       </tr>
   </table>
 
@@ -66,8 +67,13 @@
       </tr>
       <?php endforeach;?>
   </table>
-
-
+<table class="mt-5">
+    <tr>
+        <td>
+        <img src="<?php echo base_url('assets/img/logo/')."go-beyond-lg.png";?>" width="80px">
+        </td>
+    </tr>
+</table>
  
 
 </body>
