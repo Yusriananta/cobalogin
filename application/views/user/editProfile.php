@@ -24,7 +24,7 @@
 					    <label for="unit" class="col-sm-2 col-form-label">Work Unit</label>
 					    <div class="col-sm-10">
 					       <select name="unit" id="unit" class="form-control" value="">
-					            <option value="<?php echo $user['id_unit'];?>">Pilih jika akan merubah unit saja</option>
+					            <option value="<?php echo $user['id_unit'];?>"><?php echo $myUnit['unit'];?></option>
 					            <<?php foreach ($user_unit as $unit): ?>
 					                <option value="<?php echo $unit['id'];?>"><?php echo $unit['unit'];?></option>
 					            <?php endforeach ?> 
@@ -42,7 +42,12 @@
 					  			</div>
 					  			<div class="col-sm-9">
 					  				<input type="file" id="image" name="image">
+									  <?php echo form_error('image', '<small class="text-danger pl-3">', '</small>');?>
 					  			</div>
+								  <!-- <div class="custom-file">
+									<input type="file" class="custom-file-input" id="customFile">
+									<label class="custom-file-label" for="customFile">Choose file</label>
+								</div> -->
 					  		</div>
 					  	</div>
 					  </div>
@@ -65,5 +70,12 @@
 
             </div>
             <!-- End of Main Content -->
+
+			<script>
+				$('.custom-file-input').on('chnage',function() {
+            	let filenmae = $(this).val().split('\\').pop();
+        		$(this).next('.custom-file-label').addClass("selected").html(filenmae);
+				});
+			</script>
 
            

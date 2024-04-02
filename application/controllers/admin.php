@@ -17,6 +17,9 @@ class Admin extends CI_Controller
 		//Memanggil data User
 		$user = $this->db->get_where('user', ['email' =>$this->session->userdata('email')])->row_array();
 		$data['user'] = $user;
+		$bulan = date('m');
+		$tahun = date('Y');
+		$data['belum_melaksanakan'] = $this->db->query("SELECT * FROM unit_kerja WHERE NOT EXISTS ( SELECT 1 FROM pelaksanaan WHERE unit_kerja.id = pelaksanaan.id_unit and MONTH(tanggal)=$bulan AND YEAR(tanggal)=$tahun )")->result_array();
 
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('templates/topbar', $data);

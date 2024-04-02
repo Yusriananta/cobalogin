@@ -43,6 +43,7 @@ class User extends CI_Controller
 		$data['user'] = $user;
 
 		$id_unit = $user['id_unit'];
+		$data['myUnit'] = $this->db->get_where('unit_kerja', ['id' => $id_unit])->row_array();
 		
 
 		$data['user_unit'] = $this->db->get('unit_kerja')->result_array();
@@ -67,8 +68,8 @@ class User extends CI_Controller
 			$upload_image = $_FILES['image']['name'];
 
 			if ($upload_image) {
-				$config['allowed_types']        = 'gif|jpg|png';
-                $config['max_size']             = 2048;
+				$config['allowed_types']        = 'gif|jpg|png|jpeg';
+                $config['max_size']             = 1024;
                 $config['upload_path']          = './assets/img/profile/';
                  $this->load->library('upload', $config);
 
@@ -108,8 +109,8 @@ class User extends CI_Controller
 			)->row_array();
 
 		$this->form_validation->set_rules('current_password', 'Current Password', 'trim|required');
-		$this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[3]|matches[new_password2]');
-		$this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|min_length[3]|matches[new_password1]');
+		$this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[6]|matches[new_password2]');
+		$this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|min_length[6]|matches[new_password1]');
 
 
 
@@ -160,7 +161,7 @@ class User extends CI_Controller
 		
 		$data['mandatori'] = $this->db->query("SELECT * FROM planning WHERE MONTH(tanggal) = $bulan AND mandatori = 1 ORDER BY tanggal ASC")->result_array();
 		$data['planning'] = $this->db->query("SELECT * FROM planning WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun AND approvel = 0 AND mandatori = 0 AND id_unit = $id_unit ORDER BY tanggal ASC")->result_array();
-		$data['approved'] = $this->db->query("SELECT * FROM planning WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun AND approvel = 1 AND mandatori = 0 AND id_unit = $id_unit ORDER BY tanggal ASC")->result_array();
+		$data['approved'] = $this->db->query("SELECT * FROM planning WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun AND approvel = 1 AND mandatori = 0 AND id_unit = $id_unit AND NOT EXISTS ( SELECT 1 FROM pelaksanaan WHERE planning.id = pelaksanaan.id_kegiatan)")->result_array();
 		
 		
 

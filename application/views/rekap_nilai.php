@@ -35,7 +35,7 @@
         <td width="100px"><img src="<?php echo base_url('assets/img/logo/')."LogoSemenGresik.png";?>" width="80px"></td>
         <td align="left">
             <span style="line-height: 1.6; font-weight: bold;">
-                Rekap nilai monitor budaya bulan <?php echo $bulan['nama_bulan']; echo " ";echo $tahun;?>
+                Rekap Nilai Monitor Budaya Bulan <?php echo $bulan['nama_bulan']; echo " ";echo $tahun;?>
                 <br>PT. SEMEN GRESIK
             </span>
         </td>
@@ -63,7 +63,7 @@
        <td><?php echo $key['tQ1'];?></td>
        <td><?php echo $key['tQ2'];?></td>
        <td><?php echo $key['tQ3'];?></td>
-       <td><?php echo $key['total'];?></td>
+       <td class="font-weight-bold"><?php echo $key['total'];?></td>
       </tr>
       <?php endforeach;?>
   </table>

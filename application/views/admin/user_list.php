@@ -1,9 +1,7 @@
  
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-1 text-gray-800"><?php echo $title;?></h1>
-
-                   <h5 class="mb-4 text-gray-800">Haii... <?php echo $user['name'];?></h5>  
+                    <h1 class="h3 mb-4 text-gray-800"><?php echo $title;?></h1>
                 </div>
                 <!-- /.container-fluid -->
                 

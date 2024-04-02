@@ -58,12 +58,14 @@
       
                		
                		  <!-- Tabel kegiatan Approved -->
-              <div class="card shadow mb-5">
-                    
-                        <div class="card-body">
-                            <div class="table-responsive">
-                    	<table class="table table-hover">
-                    	<thead>
+            <div class="card shadow mb-5">
+            <div class="card-header py-2">
+             <h4 class="m-0 font-weight-bold text-dark">Kegiatan Terlaksana</h6>
+          </div>      
+            <div class="card-body">
+           <div class="table-responsive">
+          <table class="table table-hover">
+              <thead>
 						    <tr>
 						      <th scope="col">No</th>
 						      <th scope="col">Kegiatan</th>

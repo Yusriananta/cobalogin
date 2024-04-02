@@ -66,7 +66,10 @@
     <script src="<?php echo base_url('assets/');?>js/plotly-latest.min.js"></script>
 
     
+
+    
     <script>
+        
 
         $('.custom-file-input').on('chnage',function() {
             let filenmae = $(this).val().split('\\').pop();

@@ -22,6 +22,16 @@
     <link href="<?php echo base_url('assets/');?>css/sb-admin-2.min.css" rel="stylesheet">
     <link href="assets/img/logo/LogoSemenGresik.png" rel="shortcut icon">
 
+    <script type="text/javascript">
+        // Deteksi waktu sesi habis
+        var sessionTimeout = <?php echo $this->session->sess_expiration; ?>; // Waktu sesi dalam milidetik
+        setTimeout(function() {
+            alert("Waktu sesi Anda telah habis. Silakan login kembali."); // Tampilkan pesan peringatan
+            window.location.href = "<?php echo base_url('auth/logout'); ?>"; // Redirect ke halaman logout atau halaman login
+        }, sessionTimeout);
+    </script>
+
+
 </head>
 
 <body id="page-top">

@@ -173,10 +173,6 @@ class program_model extends CI_Model
 
 		for($pr=1;$pr<=$bln;$pr++){
 
-			$query1 = $this->db->query("SELECT (SELECT COUNT(kegiatan_budaya ) FROM pelaksanaan WHERE MONTH(tanggal) = $pr AND YEAR(tanggal) = $tahun AND id_unit='$id_unit') AS kegiatan")->row_array();
-			$kegiatan = $query1['kegiatan'];
-			
-
 			//poin
 			$qrGetbyPoin=$this->db->query("SELECT ROUND ((SELECT if(AVG(poin)is NULL ,0,AVG(poin))as poin FROM pelaksanaan WHERE id_unit='$id_unit' and month(tanggal)=$pr and year(tanggal)=$tahun),0) as poin")->result_array();
 			if($qrGetbyPoin==NULL){
@@ -192,7 +188,8 @@ class program_model extends CI_Model
 			}else{
 				$dataq1[]=$qrGetbyQ1[0]['q1'];
 			}
-
+			
+			
 			$qrGetbyQ2=$this->db->query("SELECT ROUND ((SELECT if(AVG(q2)is NULL ,0,AVG(q2))as q2 FROM pelaksanaan WHERE id_unit='$id_unit' and month(tanggal)=$pr and year(tanggal)=$tahun),0) as q2")->result_array();
 			if($qrGetbyQ2==NULL){
 				$dataq2[]=0;
@@ -206,13 +203,18 @@ class program_model extends CI_Model
 			}else{
 				$dataq3[]=$qrGetbyQ3[0]['q3'];
 			}
-			// print_r($dataq1);exit();
+			// print_r($dataq3);exit();
 
-			$dataTotal[] = $dataPoin[0]+$dataq1[0]+$dataq2[0]+$dataq3[0];
-			// print_r($dataTotal);exit();
+			$dataTotal[] = $dataPoin[$pr-1]+$dataq1[$pr-1]+$dataq2[$pr-1]+$dataq3[$pr-1];
+			// print_r($dataTotal);
 			
 		}
+		// print_r($dataTotal);exit();
 
+
+		
+		
+		// print_r($dataq1);exit();
 		// $sendData="{name :'Total',data :[".implode(",",$dataTotal)."]},
 		// 			{name :'Pelaksanaan',data :[".implode(",",$dataPoin)."]},
 		// 			{name :'Keterlibatan Pemimpin',data :[".implode(",",$dataq1)."]},
@@ -232,11 +234,18 @@ class program_model extends CI_Model
 					"valueq1"=>"[".implode(',',$dataq1)."];",
 					"valueq2"=>"[".implode(',',$dataq2)."];",
 					"valueq3"=>"[".implode(',',$dataq3)."];",
+					
 
 		];
 					// print_r($sendData);exit();
-		return $sendData;
+		return $sendData;	
+	}
 
+	public function up_terlaksana($id_kegiatan)
+	{
 		
+		$terlaksana = ['terlaksana'=>1];
+		$this->db->where('id', $id_kegiatan);
+		$this->db->update('planning', $terlaksana);
 	}
 }

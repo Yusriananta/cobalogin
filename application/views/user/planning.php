@@ -3,10 +3,13 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800"><?php echo $title;?></h1>
               
-              <div class="row g-0">
+              <div class="row g-0 mb-3">
               	<div class="col-md-5">
               		<?php echo $this->session->flashdata('message');?>
               	</div>
+				<div class="col text-right">
+					<span class="badge badge-primary">Today is <?php echo date('l, d F Y');?></span>
+				</div>
               </div>
 
 

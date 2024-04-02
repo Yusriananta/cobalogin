@@ -2,12 +2,17 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800"><?php echo $title;?></h1>
+				<div class="row">
+					<div class="col text-right mb-3">
+					<span class="badge badge-primary">Today is <?php echo date('l, d F Y');?></span>
+					</div>
+				</div>
               
               <div class="row">
                	<div class="col-lg">
 
                	<?php echo $this->session->flashdata('message');?>
-
+			
 
 
                	<div class="card shadow mb-5">

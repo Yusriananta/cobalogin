@@ -1,0 +1,3 @@
+database CMSG
+username : hcsemeng_db_login
+password : dbcmsg2024

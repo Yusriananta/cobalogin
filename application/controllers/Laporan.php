@@ -21,10 +21,12 @@ class Laporan extends CI_Controller
 
 		$bulan = date('m');
 		$tahun = date('Y');
+
+		$cek_mandatori_terlaksana = 
 		
-		$data['mandatori'] = $this->db->query("SELECT * FROM planning WHERE MONTH(tanggal) = $bulan AND mandatori = 1 ORDER BY tanggal ASC")->result_array();
+		$data['mandatori'] = $this->db->query("SELECT * FROM planning WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun AND mandatori = 1 AND NOT EXISTS ( SELECT 1 FROM pelaksanaan WHERE planning.id = pelaksanaan.id_kegiatan AND id_unit = $id_unit )")->result_array();
 		$data['planning'] = $this->db->query("SELECT * FROM planning WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun AND approvel = 0 AND mandatori = 0 AND id_unit = $id_unit ORDER BY tanggal ASC")->result_array();
-		$data['approved'] = $this->db->query("SELECT * FROM planning WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun AND approvel = 1 AND mandatori = 0 AND id_unit = $id_unit ORDER BY tanggal ASC")->result_array();
+		$data['approved'] = $this->db->query("SELECT * FROM planning WHERE MONTH(tanggal) = $bulan AND YEAR(tanggal) = $tahun AND approvel = 1 AND mandatori = 0 AND id_unit = $id_unit AND NOT EXISTS ( SELECT 1 FROM pelaksanaan WHERE planning.id = pelaksanaan.id_kegiatan)")->result_array();
 
 			$this->load->view('templates/sidebar', $data);
 			$this->load->view('templates/topbar', $data);
@@ -32,8 +34,9 @@ class Laporan extends CI_Controller
 			$this->load->view('templates/footer');
 	}
 
-	public function Pelaksanaan()
+	public function Pelaksanaan($id_kegiatan = null)
 	{
+		
 		// print_r($_FILES['image_q2']);
 		// exit();
 		$data['title'] = 'Pelaksanaan Program';
@@ -42,8 +45,9 @@ class Laporan extends CI_Controller
 		$user = $this->db->get_where('user', ['email' =>$this->session->userdata('email')])->row_array();
 		$data['user'] = $user;
 		$id_unit = $user['id_unit'];
-
+		$this->program_model->up_terlaksana($id_kegiatan);
 		$data['approved'] = $this->program_model->planApproved();
+		$data['id_kegiatan'] = $id_kegiatan;
 
 		$this->form_validation->set_rules('change_agent', 'Nama Change Agent' ,'required');
 		$this->form_validation->set_rules('pemimpin', 'Nama Pemimpin' ,'required');
@@ -122,6 +126,7 @@ class Laporan extends CI_Controller
 
                         $data =
 							[
+							'id_kegiatan'		=> $this->input->post('id', true),
 							'id_unit'			=> $id_unit,
 							'change_agent'		=> $this->input->post('change_agent', true),
 							'pemimpin'			=> $this->input->post('pemimpin', true),
@@ -139,21 +144,12 @@ class Laporan extends CI_Controller
 							'evidence2'				=> $evidence2,
 							'evidence3'				=> $evidence3
 							];
-
-							$id_kegiatan = $this->input->post('id');
 							
 							$this->db->insert('pelaksanaan', $data);
-							$terlaksana = ['terlaksana'=>1];
-							$this->db->where('id', $id_kegiatan);
-							$this->db->update('planning', $terlaksana);
+							
 							$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pelaksanaan kegiatan budaya berhasil di simpan</div>');
 							redirect('laporan');
                 }
-
-			
-
-			
-		
 
 			
 	}

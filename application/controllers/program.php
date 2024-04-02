@@ -222,7 +222,7 @@ class program extends CI_Controller
 		
 		
 		$this->program_model->deletePlanning($id);
-		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kegiatan Pending berhasil di hapus</div>');
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kegiatan berhasil di hapus</div>');
 		redirect('program');
 	}
 
